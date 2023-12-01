@@ -69,7 +69,7 @@ export class NilaiPage implements OnInit {
         nilai: this.nilai,
         id_siswa: this.id_siswa,
       };
-      this._apiService.tambah(data, '/tambah.php').subscribe({
+      this._apiService.tambah(data, 'tambah.php').subscribe({
         next: (hasil: any) => {
           this.reset_model();
           console.log('berhasil tambah data nilai');
@@ -87,7 +87,7 @@ export class NilaiPage implements OnInit {
   }
 
   hapusNilai(id: any) {
-    this._apiService.hapus(id, '/hapus.php?id=').subscribe({
+    this._apiService.hapus(id, 'hapus.php?id=').subscribe({
       next: (res: any) => {
         console.log('sukses', res);
         this.getNilai();
@@ -100,7 +100,7 @@ export class NilaiPage implements OnInit {
   }
 
   ambilNilai(id: any) {
-    this._apiService.lihat(id, '/lihat.php?id=').subscribe({
+    this._apiService.lihat(id, 'lihat.php?id=').subscribe({
       next: (hasil: any) => {
         console.log('sukses', hasil);
         let nilaisiswa = hasil;
@@ -121,7 +121,7 @@ export class NilaiPage implements OnInit {
       nilai: this.nilai,
       id_siswa: this.id_siswa,
     };
-    this._apiService.edit(data, '/edit.php').subscribe({
+    this._apiService.edit(data, 'edit.php').subscribe({
       next: (hasil: any) => {
         console.log(hasil);
         this.reset_model();

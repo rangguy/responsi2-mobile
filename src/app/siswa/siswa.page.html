@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Data Nilai {{ nama }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of 
+dataNilai; index as i">
+    <ion-item style="padding: 1px;">
+      <ion-badge style="margin: 6px;">
+        {{ i+1 }}
+      </ion-badge>
+      <ion-label>
+        {{item.mata_pelajaran}}
+        <p>{{item.nilai}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+</ion-content>
