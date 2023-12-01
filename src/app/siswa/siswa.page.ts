@@ -44,7 +44,8 @@ export class SiswaPage implements OnInit {
       this.nama = namauser;
       this.ID = idUser;
     }else {
-      console.log("Data kosong")
+      this.authService.logout();
+      this.router.navigateByUrl('/', { replaceUrl: true });
     }
   }
 
@@ -58,5 +59,32 @@ export class SiswaPage implements OnInit {
         console.log('gagal ambil data');
       },
     });
+  }
+
+  logout() {
+    this.alertController
+      .create({
+        header: 'Perhatian',
+        subHeader: 'Yakin Logout aplikasi ?',
+        buttons: [
+          {
+            text: 'Batal',
+            handler: (data: any) => {
+              console.log('Canceled', data);
+            },
+          },
+          {
+            text: 'Yakin',
+            handler: (data: any) => {
+              //jika tekan yakin
+              this.authService.logout();
+              this.router.navigateByUrl('/', { replaceUrl: true });
+            },
+          },
+        ],
+      })
+      .then((res) => {
+        res.present();
+      });
   }
 }

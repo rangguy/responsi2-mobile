@@ -12,8 +12,11 @@ export class AutoLoginGuard implements CanLoad {
     private router: Router
   ) {}
   canLoad() {
-    if (this.authService.loadToken() != null) {
+    if (this.authService.loadToken() != null && this.authService.loadRole() == 'admin') {
       this.router.navigateByUrl('/home');
+      return false;
+    } else if (this.authService.loadRole() == 'siswa'){
+      this.router.navigateByUrl('/siswa');
       return false;
     }
     return true;
